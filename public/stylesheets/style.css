@@ -1,7 +1,5 @@
 body {
-  padding: 50px;
   font-family: 'Montserrat', sans-serif;
- 
 }
 
 a {
@@ -21,8 +19,8 @@ img {
 
 div {
   margin-top: 20px;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: 150px;
+  margin-right: 150px;
   font-size: 15px;
   color: #333;
   text-align: center;

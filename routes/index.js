@@ -58,7 +58,7 @@ router.get('/yosemite_sam', function(req, res, next){
 router.get('/tasmanian_devil', function(req, res, next){
   res.render('hero', {
       title: "Тасманский Дьявол",
-      picture: "images/tasmanian_devil.png",
+      picture: "images/devil.png",
       desc: "Тасманский дьявол (или просто Таз) - бывший антагонист шоу. У него есть способность превращаться в неостанавливаемое разрушающее торнадо. Со временем Таз стал собакой Багза Банни, живя у него в конуре. Иногда Багз называет его Пёсик."
   });
 });
