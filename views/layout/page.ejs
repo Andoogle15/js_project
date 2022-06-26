@@ -16,43 +16,13 @@
               <li class="nav-item">
                <a class="nav-link active" href="/">Главная</a>
               </li>
-            <li class="nav-item">
-               <a class="nav-link" href="/bugz_bunny">Багз Банни</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/lola_bunny">Лола Банни</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/duffy_duck">Даффи Дак</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/porky_pig">Порки Пиг</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/tweety">Твитти</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/yosemite_sam">Йосемит Сэм</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/tasmanian_devil">Тасманский Дьявол</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/speedy_gonzales">Спиди Гонзалес</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/foghorn">Фогорн</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/coyote">Койот Вайл</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/roadrunner">Дорожный бегун</a>
-              </li>
+              <% menu.forEach(function(hero){ %>
+                <li><a href="/heroes/<%=hero.nick%>"><%=hero.title%></a></li>
+              <% }) %>   
             </ul>
           </div>
     </nav>
-    <%- body %>
+    <%- body %> 
   </body>
 </html>
  <body>
