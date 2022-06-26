@@ -1,11 +1,11 @@
 <% layout('./layout/page.ejs') %>
 
 <% if(user) {%>
-    <h1>Привет <%= user.username %></h1>
+    <h1 class="hello">Привет <%= user.username %></h1>
     <%  } else { %>
-    <h1>Зарегистрируйтесь, чтобы видеть все страницы сайта</h1>
+    <h1 class="hello_1">Зарегистрируйтесь, чтобы видеть все страницы сайта</h1>
     <% } %>
 
-<h1><%= title %></h1>
-<p>Добро пожаловать!</p>
-<p>Счетчик: <%= counter %></p>
+<h1 class="hello"><%= title %></h1>
+<p class="stat">Добро пожаловать!</p>
+<p class="stat_1">Счетчик: <%= counter %></p>
