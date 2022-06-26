@@ -2,6 +2,7 @@ var express = require('express')
 var router = express.Router()
 var Hero = require("../models/hero").Hero
 var async = require("async")
+var checkAuth = require("./../middleware/checkAuth.js")
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -9,7 +10,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* Страница героев */
-router.get('/:nick', function(req, res, next) {
+router.get("/:nick", checkAuth, function(req, res, next) {
     async.parallel([
             function(callback){
                 Hero.findOne({nick:req.params.nick}, callback)
@@ -22,7 +23,7 @@ router.get('/:nick', function(req, res, next) {
             if(err) return next(err)
             var hero = result[0]
             var heroes = result[1] || []
-            if(!hero) return next(new Error("Такого мультяшика нет в Шоу"))
+            if(!hero) return next(new Error("Такого мультяша не существует"))
             res.render('hero', {
                 title: hero.title,
                 picture: hero.avatar,
