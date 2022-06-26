@@ -1,19 +1,43 @@
-var MongoClient = require('mongodb').MongoClient
-var data = require("./data.js").data 
 
-const uri = "mongodb://localhost:27017/"
-const client = new MongoClient(uri)
-async function run() {
-    try  {
-        await client.connect();
-        var database = client.db("loony");
-        database.dropDatabase()
-        database = client.db("loony");
-        const heroes = database.collection("heroes");
-        const result = await heroes.insertMany(data);
-        console.log(`${result.insertedCount} documents were inserted`);
-    } finally {
-        await client.close();
-    }
+var mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost/loony')
+var Hero = require("./models/hero").Hero
+var async = require("async")
+var data = require('./data.js').data
+
+// 1. Очистить базу данных sonic
+// 2. Вставить 5 героев
+// 3. Закрыть соединение с базой данных
+
+async.series([
+        open,
+        dropDatabase,
+        createHeroes,
+        close
+    ],
+    function(err,result){
+        if(err) throw err
+        console.log("ok")
+    })
+
+function open(callback){
+    mongoose.connection.on("open",callback)
 }
-run()
+
+function dropDatabase(callback){
+    var db = mongoose.connection.db
+    db.dropDatabase(callback)
+}
+
+function createHeroes(callback){
+    async.each(data, function(heroData, callback){
+            var hero = new mongoose.models.Hero(heroData)
+            hero.save(callback)
+        },
+        callback)
+}
+
+function close(callback){
+    mongoose.disconnect(callback)
+}
+
