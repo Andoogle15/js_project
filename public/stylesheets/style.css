@@ -17,6 +17,11 @@ img {
   margin: 0 auto;
 }
 
+input {
+  display: block;
+  margin: 0 auto;
+} 
+
 div {
   margin-top: 20px;
   margin-left: 150px;
