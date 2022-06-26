@@ -22,7 +22,7 @@ router.get('/:nick', function(req, res, next) {
             if(err) return next(err)
             var hero = result[0]
             var heroes = result[1] || []
-            if(!hero) return next(new Error("Нет такого персонажа в списке"))
+            if(!hero) return next(new Error("Такого мультяшика нет в Шоу"))
             res.render('hero', {
                 title: hero.title,
                 picture: hero.avatar,
